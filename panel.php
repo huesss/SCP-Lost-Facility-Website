@@ -138,44 +138,34 @@
         <img src="LF.png" alt="SCP: Lost Facility" class="logo">
         <h1>SCP: Lost Facility Central Server</h1>
         <?php
-// Параметры подключения к базе данных
 $host = 'localhost';
 $port = '3306';
 $dbname = 'site1';
 $username = 'root';
 $password = '';
 
-// Начало сессии
 session_start();
 
-// Проверка, вошёл ли пользователь в аккаунт
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     echo "<p>Нет доступа к панели. Пожалуйста, войдите сначала.</p>";
-    exit; // Завершаем выполнение скрипта, если пользователь не вошёл
+    exit; 
 }
 
 // Подключение к базе данных
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    // Проверка, является ли пользователь администратором
-    // Здесь вам может понадобиться использовать ID пользователя, чтобы проверить его статус.
-    $userID = $_SESSION['user_id']; // Предполагается, что ID хранится в сессии.
+
+    $userID = $_SESSION['user_id'];
     $stmt = $pdo->prepare("SELECT is_admin FROM 1 WHERE id = :user_id");
     $stmt->bindParam(':user_id', $userID);
     $stmt->execute();
     $is_admin = $stmt->fetchColumn();
 
-    // Если пользователь администратор, отображаем содержимое панели
     if($is_admin) {
-        // Выводим содержимое панели
         echo "<p>Вы успешно авторизованы на панели!</p>";
-
-        // Выводим кнопку для начала создания сервера
         echo "<button class='create-server-btn' onclick='toggleCreateServerPanel()'>Начать создание</button>";
 
-        // Вывод списка серверов
         $stmt = $pdo->prepare("SELECT * FROM 1");
         $stmt->execute();
         $servers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -233,7 +223,6 @@ try {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        // Обработка ответа, если нужно
                     }
                 };
                 xhr.send("server-name=" + serverName + "&server-ip=" + serverIp);
@@ -241,8 +230,6 @@ try {
             }
 
             function launchGame(ip) {
-                // Вставьте здесь код для запуска игры
-                // Например:
                 window.location.href = "file://SCPLF.exe?ip=" + ip;
             }
         </script>
