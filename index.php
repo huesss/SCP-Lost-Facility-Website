@@ -89,10 +89,10 @@
                     $user = $stmt->fetch();
                     
                     if ($user) {
-                        // Генерация ключа
+                        // Генерация ключа в адресной строке после panel.php, важно что ниже указано как будет выглядеть адресная строка, КАТЕГОРИЧЕСКИ запрещено менять ее значение в 'key=' иначе вы можете что то сломать.
                         $generatedKey = base64_encode(random_bytes(32));
 
-                        // Переадресация на панель с ключом
+                        // Переадресация на панель с ключом (ЕСЛИ НЕ РАБОТАЕТ - ЗАКОМЕНТИТЬ! КАК И ВЫШЕ //\\ "$generatedKey = base64_encode(random_bytes(32));" а лучше делайте '<!-- -->' ) 
                         $redirectionURL = 'panel.php?key=' . $generatedKey;
                         header('Location: ' . $redirectionURL);
                         exit();
