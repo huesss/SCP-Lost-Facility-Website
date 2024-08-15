@@ -137,7 +137,10 @@
     <div class="container">
         <img src="LF.png" alt="SCP: Lost Facility" class="logo">
         <h1>SCP: Lost Facility Central Server</h1>
-        <?php
+
+<!-- НЕ РАБОТАЕТ, САЙТ НА ПЕРЕРАБОТКЕ! КТО ЗАХОЧЕТ ПЕРЕДЕЛАЕТ И КИНЕТ В ПУЛЛЫ, БУДУ РАД! --> 
+
+<?php
 $host = 'localhost';
 $port = '3306';
 $dbname = 'site1';
