@@ -118,7 +118,7 @@ if(isset($_SESSION['error'])){
 
     if(isset($_SESSION["error"])){
         echo $_SESSION["error"];
-        unset($_SESSION["error"]); // Очищаем переменную с сообщением об ошибке после вывода
+        unset($_SESSION["error"]); // аналагично выше в if очищаем переменную
     } else {
         echo "Ошибка";
     }
