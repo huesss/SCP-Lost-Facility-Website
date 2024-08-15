@@ -42,7 +42,7 @@ if(isset($_SESSION['error'])){
     ?>
     </span>
 
-        <!-- Scripts -->
+        <!-- СКРИПТЫ -->
         <script src="/js/app.js" defer></script>
     </head>
     <body class="dark">
@@ -80,7 +80,6 @@ if(isset($_SESSION['error'])){
     
 <div class="relative">
     <div class="absolute left-50% transform -translate-x-50% ml-10"> 
-        <!-- Элемент, который нужно центрировать -->
     </div>
 </div>
 <style>
@@ -110,7 +109,7 @@ if(isset($_SESSION['error'])){
     </button>
 </div>
 
-    <!-- Текст о несанкционированном использовании -->
+    <!-- Текст о используемых данных запрашивий сайт-->
     <div class="bg-white dark:bg-gray-800 px-4 py-3 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 sm:px-6 mt-5">
         <div>
             <p class="text-sm text-gray-700 dark:text-gray-200">
